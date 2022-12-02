@@ -19,8 +19,9 @@ public class EmployeeController {
     private EmployeeService employeeService;
     @PostMapping("/saveEmployee")
     public ResponseEntity<Object>saveEmp(@RequestBody @Valid EmployeeDto employeeDto){
-    	employeeService.SaveEmp(employeeDto);
-        return ResponseEntity.ok().body(employeeDto.toString()+"\n"+employeeService.SaveEmp(employeeDto));
+//    	employeeService.SaveEmp(employeeDto);
+//        return ResponseEntity.ok().body(employeeDto.toString()+"\n"+employeeService.SaveEmp(employeeDto));
+    	 return ResponseEntity.ok().body(employeeService.SaveEmp(employeeDto));
     }
 
     @GetMapping("/getAllEmp")
