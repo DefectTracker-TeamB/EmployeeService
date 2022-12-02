@@ -18,20 +18,16 @@ public class Employee {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@NotNull(message = "Employee name shouldn't be null")
 	private String name;
-	@Email(message = "Invalid email address")
+
 	private String email;
 
-	@Pattern(regexp = "^\\d{10}$", message = "Invalid mobile number")
 	private String mobile;
 
-	@NotBlank(message = "Fill the address")
 	private String address;
-	@NotNull(message = "Employee gender shouldn't be null")
 	private String gender;
 
-	@NotBlank
+
 	private String designation;
 
 }

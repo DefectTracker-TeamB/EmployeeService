@@ -34,7 +34,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     List<Integer>defectEmployees=new ArrayList<>();
     @Override
     public String SaveEmp(EmployeeDto employeeDto) {
-        try{
+   
             Employee employee=new Employee();
             Designations designations=designationRepo.findById(employeeDto.getDesignation_id()).get();
             employee.setName(employeeDto.getName());
@@ -42,6 +42,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             employee.setGender(employeeDto.getGender());
             employee.setDesignation(designations.getName());
             employee.setAddress(employeeDto.getAddress());
+            employee.setMobile(employeeDto.getMobile());
             if(employeeRepo.existsByEmail(employee.getEmail())){
                 return "Employee Already exists";
             }else {
@@ -73,9 +74,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
             }
 
-        }catch (Exception e){
-            return "Invalid inputs";
-        }
+       
     }
 
 
@@ -107,6 +106,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.setGender(employeeDto.getGender());
         employee.setDesignation(defectTrackerDesignation.getName());
         employee.setAddress(employeeDto.getAddress());
+        employee.setMobile(employeeDto.getMobile());
         employeeRepo.save(employee);
         return "edited";
 
