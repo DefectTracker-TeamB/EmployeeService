@@ -10,14 +10,17 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/employee")
 public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
     @PostMapping("/saveEmployee")
-    public ResponseEntity<Object>saveEmp(@RequestBody EmployeeDto employeeDto){
-        return ResponseEntity.ok().body(employeeService.SaveEmp(employeeDto));
+    public ResponseEntity<Object>saveEmp(@RequestBody @Valid EmployeeDto employeeDto){
+    	employeeService.SaveEmp(employeeDto);
+        return ResponseEntity.ok().body(employeeDto.toString()+"\n"+employeeService.SaveEmp(employeeDto));
     }
 
     @GetMapping("/getAllEmp")
